@@ -1,0 +1,58 @@
+<!-- Glassfish
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>bean-validator</artifactId>
+			<version>3.0-JBoss-4.0.2_02</version>
+			<scope>provided</scope>
+		</dependency> -->
+
+		
+<!-- Toplink Dependencies 
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.0.0</version>
+			<scope>test</scope>
+		</dependency> -->
+		
+<!-- Database 	
+		<dependency>
+	        <groupId>org.apache.derby</groupId>
+	        <artifactId>derby</artifactId>
+	        <version>10.5.3.0</version>
+	        <scope>test</scope>
+		</dependency> -->
+		
+<!-- Jersey 
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-test-framework</artifactId>
+			<version>${jersey-version}</version>
+			<scope>test</scope>
+		</dependency>-->
+
+<!-- HyperJaxB3 Roundtrip 
+		<dependency>
+			<groupId>org.jvnet.hyperjaxb3</groupId>
+			<artifactId>hyperjaxb3-ejb-roundtrip</artifactId>
+			<version>0.5.4</version>
+			<scope>test</scope>
+		</dependency> -->
+
+<!-- support equals etc. at runtime 
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+			<version>0.5.2</version>
+		</dependency> -->
+
+
+<!-- Reporting 
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting> -->

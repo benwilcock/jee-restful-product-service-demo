@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="item" type="Item"/>
+	<xsd:complexType name="Item">
+		<xsd:attribute name="id" type="xsd:long" use="optional" default="0"/>
+		<xsd:attribute name="name" type="xsd:string" use="required"/>
+		<xsd:attribute name="cost" type="xsd:int" use="optional"/>
+		<xsd:attribute name="price" type="xsd:int" use="optional"/>
+	</xsd:complexType>
+	<xsd:element name="items" type="Items"/>
+	<xsd:complexType name="Items">
+		<xsd:sequence>
+			<xsd:element name="item" type="Item" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

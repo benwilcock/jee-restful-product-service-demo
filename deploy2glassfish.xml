@@ -1,0 +1,27 @@
+<?xml version='1.0'?>
+
+<!--
+ * 
+ * flightsearch-web/deploy2Tomcat-build.xml
+ * 
+ * generated on Fri Aug 25 10:59:13 BST 2006 
+ * by UPCO ProjectBuilder maven plugin.
+ * 
+ * See http://upco-source.leeds.upco/projectbuilder
+ * 
+-->
+<project name="deploy2Server" default="all" basedir=".">
+
+    <property name="sleep.duration" value="20"/>    
+    
+    <target name="all">
+        <echo message="Build Directory = ${project.build.directory}" />
+        <echo message="Server Home = ${server.home}" />
+        
+        <copy file="${project.build.directory}/RESTfulProductService.war"
+              todir="${server.home}/glassfish/domains/domain1/autodeploy"/>
+    		<echo message="Sleeping for ${sleep.duration} seconds to ensure deployment..."/>
+    
+    <sleep seconds="${sleep.duration}"/>
+    </target>
+</project>

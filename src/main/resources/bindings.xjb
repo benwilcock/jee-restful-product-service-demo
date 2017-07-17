@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:hj="http://hyperjaxb3.jvnet.org/ejb/schemas/customizations"
+	xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+
+	jaxb:extensionBindingPrefixes="hj orm xjc">
+
+	<jaxb:bindings schemaLocation="item.xsd" node="/xs:schema">
+		<jaxb:globalBindings generateIsSetMethod="true">
+			<xjc:simple />
+			<jaxb:serializable/>
+		</jaxb:globalBindings>
+		<jaxb:schemaBindings>
+			<jaxb:package name="restfulProductService.objectModel"/>
+		</jaxb:schemaBindings>
+		
+		<jaxb:bindings node="xs:complexType[@name='Item']">
+			<hj:entity>
+				<orm:table name="ITEM"/>
+			</hj:entity>
+			<jaxb:bindings node="xs:attribute[@name='id']">
+				<hj:id>
+					<orm:column name="ITEM_ID"/>
+					<orm:generated-value strategy="AUTO"/>
+				</hj:id>
+			</jaxb:bindings>
+			<jaxb:bindings node="xs:attribute[@name='name']">
+				<hj:basic>
+					<orm:column name="PRODUCTNAME" length="32"/>
+				</hj:basic>
+			</jaxb:bindings>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:complexType[@name='Items']">
+			<hj:ignored/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+</jaxb:bindings>

@@ -1,0 +1,364 @@
+
+	<!--
+
+		DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER. Copyright
+		1997-2007 Sun Microsystems, Inc. All rights reserved. The contents of
+		this file are subject to the terms of either the GNU General Public
+		License Version 2 only ("GPL") or the Common Development and
+		Distribution License("CDDL") (collectively, the "License"). You may
+		not use this file except in compliance with the License. You can
+		obtain a copy of the License at
+		https://jersey.dev.java.net/CDDL+GPL.html or jersey/legal/LICENSE.txt.
+		See the License for the specific language governing permissions and
+		limitations under the License. When distributing the software, include
+		this License Header Notice in each file and include the License file
+		at jersey/legal/LICENSE.txt. Sun designates this particular file as
+		subject to the "Classpath" exception as provided by Sun in the GPL
+		Version 2 section of the License file that accompanied this code. If
+		applicable, add the following below the License Header, with the
+		fields enclosed by brackets [] replaced by your own identifying
+		information: "Portions Copyrighted [year] [name of copyright owner]"
+
+		Contributor(s): If you wish your version of this file to be governed
+		by only the CDDL or only the GPL Version 2, indicate your decision by
+		adding "[Contributor] elects to include this software in this
+		distribution under the [CDDL or GPL Version 2] license." If you don't
+		indicate a single choice of license, a recipient has the option to
+		distribute your version of this file under either the CDDL, the GPL
+		Version 2 or to extend the choice of license to its licensees as
+		provided above. However, if you add GPL Version 2 code and therefore,
+		elected the GPL Version 2 license, then the option applies only if the
+		new code is made subject to such option by the copyright holder.
+	-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>RESTfulProductService</groupId>
+	<artifactId>service</artifactId>
+	<packaging>war</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>RESTfulProductService</name>
+
+	<!--
+
+		If you start to get Out of Memory errors when working with maven, add
+		the following to your windows environment settings:
+
+		MAVEN_OPTS="-Xmx256M -XX:MaxPermSize=128m"
+	-->
+
+	<!-- Repositories -->
+	<repositories>
+		<repository>
+			<id>repository.highsource.org</id>
+			<name>Java.net Maven 2 Repository for GlassFish</name>
+			<url>http://repository.highsource.org/maven2/snapshots/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>glassfish-maven2-repository.dev.java.net</id>
+			<name>Java.net Maven 2 Repository for GlassFish</name>
+			<url>http://download.java.net/maven/glassfish/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Maven 2 Repository</name>
+			<url>http://download.java.net/maven/2/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>maven-repository.dev.java.net</id>
+			<name>Java.net Maven 1 Repository (legacy)</name>
+			<url>http://download.java.net/maven/1</url>
+			<layout>legacy</layout>
+		</repository>
+		<repository>
+			<id>EclipseLink Repo</id>
+			<url>http://www.eclipse.org/downloads/download.php?r=1&amp;nf=1&amp;file=/rt/eclipselink/maven.repo</url>
+		</repository>
+	</repositories>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repository.highsource.org</id>
+			<name>Java.net Maven 2 Repository for GlassFish</name>
+			<url>http://repository.highsource.org/maven2/snapshots/</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>eviwarePluginRepository</id>
+			<url>http://www.eviware.com/repository/maven2/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven2-repository.dev.java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven-repository.dev.java.net</id>
+			<url>http://download.java.net/maven/1</url>
+			<layout>legacy</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>glassfish-maven2-repository.dev.java.net</id>
+			<url>http://download.java.net/maven/glassfish/</url>
+			<layout>default</layout>
+		</pluginRepository>
+	</pluginRepositories>	
+	
+	<!-- Dependencies -->
+	<dependencies>	
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+		
+		<!-- JaxB -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!--<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+			<version>0.5.3-SNAPSHOT</version>
+		</dependency>-->
+		
+		<!-- Glassfish -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.ejb</artifactId>
+			<version>3.0-b70</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.javaee</artifactId>
+			<version>3.0-b54</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<!-- HyperJaxB3 -->
+		<dependency>
+			<groupId>org.jvnet.hyperjaxb3</groupId>
+			<artifactId>hyperjaxb3-ejb-runtime</artifactId>
+			<version>0.5.5-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<!-- Mocking with Mockito -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <version>1.8.1</version>
+		</dependency>
+		
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+		</dependency>
+		
+		<!-- Toplink Testing Dependencies -->
+		<dependency>
+			<groupId>toplink.essentials</groupId>
+			<artifactId>toplink-essentials</artifactId>
+			<version>2.0.1-04</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Database Testing Dependencies -->
+		<dependency>
+		    <groupId>org.apache.derby</groupId>
+    		<artifactId>derby</artifactId>
+    		<version>10.6.1.0</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Roundtrip Testing Dependencies -->
+		<dependency>
+			<groupId>org.jvnet.hyperjaxb3</groupId>
+			<artifactId>hyperjaxb3-ejb-roundtrip</artifactId>
+			<version>0.5.5-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
+	
+	
+	
+	<!-- Properties -->
+	<properties>
+		<jersey-version>1.1.5</jersey-version>
+		<netbeans.hint.deploy.server>gfv3ee6</netbeans.hint.deploy.server>
+	</properties>
+
+	
+	<!-- Build -->
+	<build>
+		<finalName>RESTfulProductService</finalName>
+		<!-- Plugins -->
+		<plugins>
+			<!-- 
+			     Embedded GlassFish Maven.
+			     
+			     Used by the Verify Goal to do full integration testing using 
+			     an embedded container.
+			-->
+			<plugin>
+				<groupId>org.glassfish</groupId>
+                <artifactId>maven-embedded-glassfish-plugin</artifactId>
+                <version>3.0.1</version>
+				<configuration>
+					<serverID>server</serverID>
+					<name>server</name>
+					<app>${project.build.directory}/${project.build.finalName}.war</app>
+					<port>8080</port>
+					<instanceRoot>${project.build.directory}/gfe-${maven.build.timestamp}</instanceRoot>
+					<autoDelete>true</autoDelete>
+					<configFile>${basedir}/src/test/glassfish/domain.xml</configFile>
+					<contextRoot>${project.build.finalName}</contextRoot>
+					<goalPrefix>embedded-glassfish</goalPrefix>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-glassfish</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>glassfish-deploy</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>glassfish-undeploy</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>undeploy</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-glassfish</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- 
+				SoapUI Plugin.
+				
+				Bound to the integration-test phase so that full SOA testing 
+				can occur during a build.
+			 -->
+			<plugin>
+				<groupId>eviware</groupId>
+				<artifactId>maven-soapui-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<projectFile>${basedir}/src/test/soapui/RESTfulProductService-soapui-project.xml</projectFile>
+					<settingsFile>${basedir}/src/test/soapui/soapui-settings.xml</settingsFile>
+					<junitReport>true</junitReport>
+					<printReport>false</printReport>
+					<exportwAll>true</exportwAll>
+					<outputFolder>${project.build.directory}/surefire-reports</outputFolder>
+				</configuration>
+				<executions>
+					<execution>
+						<id>soapUI</id>
+						<!--Run as part of the test phase in the Maven lifecycle-->
+						<phase>integration-test</phase>
+						<goals>
+							<!--Run the test phase of eviware:maven-soapui-plugin-->
+							<goal>test</goal>
+							<!--<goal>loadtest</goal>-->
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- Compiler -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			
+			<!-- HyperJaxB 3 -->
+			<plugin>
+				<groupId>org.jvnet.hyperjaxb3</groupId>
+				<artifactId>maven-hyperjaxb3-plugin</artifactId>
+				<version>0.5.5-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<roundtripTestClassName>restfulProductService.dataAccess.RoundtripTest</roundtripTestClassName>
+					<generateEquals>true</generateEquals>
+					<generateHashCode>true</generateHashCode>
+					<verbose>true</verbose>
+					<extension>true</extension>
+					<episode>false</episode>
+					<persistenceXml>src/main/etc/persistence-template.xml</persistenceXml>
+					<persistenceUnitName>RESTfulProductService</persistenceUnitName>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 
+		Call "mvn package -P itest" if you want to deploy the 
+		application to the Glassfish autodeploy folder for manual 
+		testing. The referenced ANT script does some of the work.
+	-->
+	<profiles>
+		<profile>
+			<id>itest</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<configuration>
+									<tasks>
+										<ant antfile="deploy2Glassfish.xml" inheritRefs="true">
+											<target name="all"/>
+											<property name="project.build.directory" value="${project.build.directory}"/>
+											<!-- <property name="server.home" value="${server.home}"></property>  -->
+											<property name="server.home" value="C:\glassfish3"/>
+										</ant>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
